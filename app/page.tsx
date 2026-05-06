@@ -32,6 +32,10 @@ export default function Home() {
   return (
     <div style={{ padding: 20 }}>
       <h1>Updates</h1>
+      
+      <button onClick={fetchPosts} style={{ marginBottom: 10 }}>
+        Refresh Feed
+      </button>
 
       {/* SEARCH INPUT (must be above filter logic visually) */}
       <input
