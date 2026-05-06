@@ -12,10 +12,9 @@ export default function Create() {
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
   const [venue, setVenue] = useState("")
-  const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
 
@@ -27,49 +26,57 @@ export default function Create() {
 
     if (error) {
       alert("Failed to create post")
+      console.error(error)
       return
     }
 
-    const msg = `📌 ${course} ${title}
-
-Date: ${date}
-Time: ${time}
-Venue: ${venue}
-
-— UP2D8`
-
-    setMessage(msg)
-
-    // 🔥 MVP FLOW FIX
     router.push("/")
     router.refresh()
   }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Create Post</h1>
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold">Create Post</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Course" onChange={e => setCourse(e.target.value)} /><br/>
-        <input placeholder="Title" onChange={e => setTitle(e.target.value)} /><br/>
-        <input placeholder="Date" onChange={e => setDate(e.target.value)} /><br/>
-        <input placeholder="Time" onChange={e => setTime(e.target.value)} /><br/>
-        <input placeholder="Venue" onChange={e => setVenue(e.target.value)} /><br/>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <input
+          placeholder="Course"
+          className="w-full p-2 border rounded-lg"
+          onChange={(e) => setCourse(e.target.value)}
+        />
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Posting..." : "Generate"}
+        <input
+          placeholder="Title"
+          className="w-full p-2 border rounded-lg"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <input
+          placeholder="Date"
+          className="w-full p-2 border rounded-lg"
+          onChange={(e) => setDate(e.target.value)}
+        />
+
+        <input
+          placeholder="Time"
+          className="w-full p-2 border rounded-lg"
+          onChange={(e) => setTime(e.target.value)}
+        />
+
+        <input
+          placeholder="Venue"
+          className="w-full p-2 border rounded-lg"
+          onChange={(e) => setVenue(e.target.value)}
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-black text-white p-2 rounded-lg hover:bg-gray-800"
+        >
+          {loading ? "Posting..." : "Generate Post"}
         </button>
       </form>
-
-      {message && (
-        <>
-          <h3>WhatsApp Message</h3>
-          <pre>{message}</pre>
-          <button onClick={() => navigator.clipboard.writeText(message)}>
-            Copy
-          </button>
-        </>
-      )}
     </div>
   )
 }
