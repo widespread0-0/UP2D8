@@ -28,20 +28,20 @@ export default function RootLayout({
         className={`
           ${geistSans.variable}
           ${geistMono.variable}
-          bg-gray-50
+          bg-white
           text-gray-900
           antialiased
           min-h-screen
         `}
       >
         <div className="max-w-2xl mx-auto px-4 py-8">
-          <header className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight">
+          <header className="mb-10 space-y-1">
+            <h1 className="text-2xl font-semibold tracking-tight">
               UP2D8
             </h1>
 
-            <p className="text-gray-500 mt-1">
-              Structured academic updates
+            <p className="text-sm text-gray-500">
+              Structured. Verified. Up to date.
             </p>
           </header>
 

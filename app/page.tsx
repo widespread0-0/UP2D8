@@ -66,29 +66,25 @@ export default function Home() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            Updates
+          <h1 className="text-xl font-semibold">
+            Academic Updates
           </h1>
 
-          <p className="text-gray-500 mt-1">
-            Latest academic updates
+          <p className="text-sm text-gray-500">
+            Real-time. Structured. Searchable.
           </p>
         </div>
 
         <button
           onClick={fetchPosts}
-          className="
-            text-sm
-            text-blue-600
-            hover:underline
-          "
+          className="text-sm text-blue-600 hover:underline"
         >
           Refresh
         </button>
       </div>
 
       <input
-        placeholder="Search by course or title..."
+        placeholder="Search (e.g. CSC301 test, exam this week)"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="
@@ -96,7 +92,7 @@ export default function Home() {
           p-3
           border
           border-gray-200
-          rounded-2xl
+          rounded-xl
           bg-white
           focus:outline-none
           focus:ring-2
@@ -111,9 +107,9 @@ export default function Home() {
       )}
 
       {!loading && filteredPosts.length === 0 && (
-        <div className="bg-white border border-gray-200 rounded-3xl p-6 text-center shadow-sm">
+        <div className="border border-gray-200 rounded-xl p-6 text-center">
           <p className="text-gray-500">
-            No updates found.
+            No matching records.
           </p>
         </div>
       )}
@@ -123,45 +119,42 @@ export default function Home() {
           <div
             key={p.id}
             className="
-              bg-white
               border
               border-gray-200
-              rounded-3xl
-              p-5
-              shadow-sm
-              space-y-4
+              rounded-xl
+              p-4
+              space-y-3
             "
           >
-            <div className="flex items-center justify-between">
-              <span
-                className="
-                  text-xs
-                  font-semibold
-                  bg-blue-100
-                  text-blue-700
-                  px-3
-                  py-1
-                  rounded-full
-                "
-              >
+            <div className="flex items-center justify-between text-xs text-gray-500">
+              <span className="font-medium text-gray-700">
                 {p.course}
               </span>
 
-              <span className="text-xs text-gray-400">
+              <span>
                 {formatTimeAgo(p.created_at)}
               </span>
             </div>
 
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">
-                {p.title}
-              </h2>
+            <div className="text-sm font-medium text-gray-900">
+              {p.title}
             </div>
 
-            <div className="text-sm text-gray-600 space-y-1">
-              <p>📅 {p.date}</p>
-              <p>⏰ {p.time}</p>
-              <p>📍 {p.venue}</p>
+            <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
+              <div>
+                <p className="text-gray-400">Date</p>
+                <p>{p.date}</p>
+              </div>
+
+              <div>
+                <p className="text-gray-400">Time</p>
+                <p>{p.time}</p>
+              </div>
+
+              <div>
+                <p className="text-gray-400">Venue</p>
+                <p>{p.venue}</p>
+              </div>
             </div>
           </div>
         ))}
