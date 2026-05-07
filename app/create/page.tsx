@@ -68,6 +68,8 @@ Source: UP2D8`
 
   return (
     <div className="space-y-6">
+
+      {/* Header */}
       <div>
         <h1 className="text-xl font-semibold">
           New Update
@@ -78,14 +80,16 @@ Source: UP2D8`
         </p>
       </div>
 
-      <div className="border border-gray-200 rounded-xl p-6">
+      {/* Form */}
+      <div className="border border-gray-200 rounded-lg p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
+
           <input
             type="text"
             placeholder="Course Code (e.g. CSC301)"
             value={course}
             onChange={(e) => setCourse(e.target.value)}
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-900"
           />
 
           <input
@@ -93,21 +97,21 @@ Source: UP2D8`
             placeholder="Update Title (e.g. Test Announcement)"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-900"
           />
 
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-900"
           />
 
           <input
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-900"
           />
 
           <input
@@ -115,23 +119,26 @@ Source: UP2D8`
             placeholder="Venue"
             value={venue}
             onChange={(e) => setVenue(e.target.value)}
-            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-gray-900"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition font-medium"
+            className="w-full bg-gray-900 text-white p-3 rounded-lg text-sm hover:bg-black"
           >
             {loading ? "Publishing..." : "Publish Update"}
           </button>
+
         </form>
       </div>
 
+      {/* Success */}
       {success && (
-        <div className="border border-gray-200 rounded-xl p-6 space-y-5">
+        <div className="border border-gray-200 rounded-lg p-6 space-y-5">
+
           <div>
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold">
               Update Published
             </h2>
 
@@ -149,7 +156,7 @@ Source: UP2D8`
               onClick={() =>
                 navigator.clipboard.writeText(message)
               }
-              className="flex-1 border border-gray-200 p-3 rounded-lg hover:bg-gray-100 font-medium"
+              className="flex-1 border border-gray-200 p-3 rounded-lg text-sm hover:bg-gray-100"
             >
               Copy
             </button>
@@ -157,7 +164,7 @@ Source: UP2D8`
             <a
               href={whatsappUrl}
               target="_blank"
-              className="flex-1 bg-gray-900 text-white p-3 rounded-lg text-center hover:bg-black font-medium"
+              className="flex-1 bg-gray-900 text-white p-3 rounded-lg text-sm text-center hover:bg-black"
             >
               Open WhatsApp
             </a>
@@ -169,6 +176,7 @@ Source: UP2D8`
           >
             Back to Updates
           </Link>
+
         </div>
       )}
     </div>

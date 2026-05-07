@@ -35,14 +35,22 @@ export default function RootLayout({
         `}
       >
         <div className="max-w-2xl mx-auto px-4 py-8">
-          <header className="mb-10 space-y-1">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              UP2D8
-            </h1>
+          
+          {/* Header */}
+          <header className="mb-10 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {/* Placeholder for logo */}
+              <div className="w-6 h-6 bg-gray-900 rounded-sm" />
 
-            <p className="text-sm text-gray-500">
-              Structured. Verified. Up to date.
-            </p>
+              <h1 className="text-lg font-semibold tracking-tight">
+                UP2D8
+              </h1>
+            </div>
+
+            <nav className="text-sm text-gray-500 flex gap-4">
+              <a href="/">Updates</a>
+              <a href="/create">New</a>
+            </nav>
           </header>
 
           <main>{children}</main>

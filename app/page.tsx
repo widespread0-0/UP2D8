@@ -64,6 +64,8 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
+      
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-semibold">
@@ -83,6 +85,7 @@ export default function Home() {
         </button>
       </div>
 
+      {/* Search */}
       <input
         placeholder="Search (e.g. CSC301 test, exam this week)"
         value={query}
@@ -92,69 +95,58 @@ export default function Home() {
           p-3
           border
           border-gray-200
-          rounded-xl
-          bg-white
+          rounded-lg
+          text-sm
           focus:outline-none
-          focus:ring-2
-          focus:ring-blue-500
+          focus:ring-1
+          focus:ring-gray-900
         "
       />
 
+      {/* Loading */}
       {loading && (
         <p className="text-gray-500 text-sm">
           Loading updates...
         </p>
       )}
 
+      {/* Empty */}
       {!loading && filteredPosts.length === 0 && (
-        <div className="border border-gray-200 rounded-xl p-6 text-center">
+        <div className="border border-gray-200 rounded-lg p-6 text-center">
           <p className="text-gray-500">
             No matching records.
           </p>
         </div>
       )}
 
-      <div className="space-y-4">
+      {/* Posts */}
+      <div className="space-y-3">
         {filteredPosts.map((p) => (
           <div
             key={p.id}
             className="
               border
               border-gray-200
-              rounded-xl
+              rounded-lg
               p-4
-              space-y-3
+              space-y-2
             "
           >
-            <div className="flex items-center justify-between text-xs text-gray-500">
+            <div className="flex justify-between text-xs text-gray-500">
               <span className="font-medium text-gray-700">
                 {p.course}
               </span>
-
-              <span>
-                {formatTimeAgo(p.created_at)}
-              </span>
+              <span>{formatTimeAgo(p.created_at)}</span>
             </div>
 
             <div className="text-sm font-medium text-gray-900">
               {p.title}
             </div>
 
-            <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
-              <div>
-                <p className="text-gray-400">Date</p>
-                <p>{p.date}</p>
-              </div>
-
-              <div>
-                <p className="text-gray-400">Time</p>
-                <p>{p.time}</p>
-              </div>
-
-              <div>
-                <p className="text-gray-400">Venue</p>
-                <p>{p.venue}</p>
-              </div>
+            <div className="flex gap-4 text-xs text-gray-600">
+              <span>{p.date}</span>
+              <span>{p.time}</span>
+              <span>{p.venue}</span>
             </div>
           </div>
         ))}
