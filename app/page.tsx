@@ -44,9 +44,8 @@ export default function Home() {
     const date = new Date(dateString)
     const now = new Date()
 
-    const seconds = Math.floor(
-      (now.getTime() - date.getTime()) / 1000
-    )
+    const seconds =
+      Math.floor((now.getTime() - date.getTime()) / 1000)
 
     const minutes = Math.floor(seconds / 60)
     const hours = Math.floor(minutes / 60)
@@ -64,15 +63,25 @@ export default function Home() {
   )
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">
-          Updates
-        </h1>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">
+            Updates
+          </h1>
+
+          <p className="text-gray-500 mt-1">
+            Latest academic updates
+          </p>
+        </div>
 
         <button
           onClick={fetchPosts}
-          className="text-sm text-blue-600 hover:underline"
+          className="
+            text-sm
+            text-blue-600
+            hover:underline
+          "
         >
           Refresh
         </button>
@@ -86,22 +95,23 @@ export default function Home() {
           w-full
           p-3
           border
-          rounded-xl
+          border-gray-200
+          rounded-2xl
           bg-white
           focus:outline-none
           focus:ring-2
-          focus:ring-black
+          focus:ring-blue-500
         "
       />
 
       {loading && (
-        <p className="text-sm text-gray-500">
+        <p className="text-gray-500 text-sm">
           Loading updates...
         </p>
       )}
 
       {!loading && filteredPosts.length === 0 && (
-        <div className="bg-white border rounded-xl p-6 text-center">
+        <div className="bg-white border border-gray-200 rounded-3xl p-6 text-center shadow-sm">
           <p className="text-gray-500">
             No updates found.
           </p>
@@ -115,10 +125,11 @@ export default function Home() {
             className="
               bg-white
               border
-              rounded-2xl
+              border-gray-200
+              rounded-3xl
               p-5
               shadow-sm
-              space-y-3
+              space-y-4
             "
           >
             <div className="flex items-center justify-between">
@@ -126,9 +137,9 @@ export default function Home() {
                 className="
                   text-xs
                   font-semibold
-                  bg-black
-                  text-white
-                  px-2
+                  bg-blue-100
+                  text-blue-700
+                  px-3
                   py-1
                   rounded-full
                 "
@@ -141,9 +152,11 @@ export default function Home() {
               </span>
             </div>
 
-            <h2 className="text-lg font-semibold">
-              {p.title}
-            </h2>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {p.title}
+              </h2>
+            </div>
 
             <div className="text-sm text-gray-600 space-y-1">
               <p>📅 {p.date}</p>
