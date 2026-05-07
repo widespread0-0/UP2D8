@@ -147,28 +147,42 @@ Source: UP2D8`
             </p>
           </div>
 
-          <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded-lg text-sm">
+          <pre className="
+            whitespace-pre-wrap 
+            break-words 
+            bg-[#DCF8C6] 
+            text-gray-900 
+            p-4 
+            rounded-xl 
+            rounded-tr-none 
+            text-sm 
+            font-sans 
+            leading-relaxed 
+            shadow-sm 
+            border border-green-200
+          ">
             {message}
           </pre>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 mt-4">
             <button
-              onClick={() =>
-                navigator.clipboard.writeText(message)
-              }
-              className="flex-1 border border-gray-200 p-3 rounded-lg text-sm hover:bg-gray-100"
+              onClick={() => navigator.clipboard.writeText(message)}
+              className="flex-1 flex items-center justify-center gap-2 border border-gray-200 p-3 rounded-2xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
             >
-              Copy
+              {/* Optional: Add a small icon here */}
+              Copy Message
             </button>
 
             <a
               href={whatsappUrl}
               target="_blank"
-              className="flex-1 bg-gray-900 text-white p-3 rounded-lg text-sm text-center hover:bg-black"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center bg-[#25D366] text-white p-3 rounded-2xl text-sm font-medium hover:bg-[#128C7E] transition-colors shadow-sm"
             >
               Open WhatsApp
             </a>
           </div>
+
 
           <Link
             href="/"
